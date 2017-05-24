@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p>Hello World</p>
+        <input placeholder='Enter Text'></input>
       </div>
     );
   }
