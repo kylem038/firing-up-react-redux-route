@@ -4,20 +4,18 @@ import { bindActionCreators } from 'redux';
 
 import { captureInput } from '../actions/input.js';
 
+import Input from './input';
+
 class App extends Component {
   constructor() {
     super();
 
-    this.handleInput = this.handleInput.bind(this);
     this.submitText = this.submitText.bind(this);
+    this.handleAppText = this.handleAppText.bind(this);
 
     this.state = {
-      inputText: '',
+      inputText: 'Hey',
     }
-  }
-
-  handleInput(e) {
-    this.setState({ inputText: e.target.value });
   }
 
   submitText() {
@@ -25,13 +23,17 @@ class App extends Component {
     captureInput(this.state.inputText);
   }
 
+  handleAppText(text) {
+    this.setState({ inputText: text });
+  }
+
   render() {
     return (
       <div>
-        <input
-          placeholder='Enter Text'
-          onChange={this.handleInput}
-        ></input>
+        <Input
+          zooAnimals={this.state.inputText}
+          handleAppText={this.handleAppText}
+        />
         <button onClick={this.submitText}>Submit</button>
       </div>
     );
